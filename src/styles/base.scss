@@ -1,0 +1,37 @@
+@import './variables.scss';
+
+
+// FONT
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&display=swap');
+
+
+// COLOR
+/*
+Background: #DADCE0;
+Field: #27375C;
+Sidebar: #BA9EA7;
+Text: #343434;
+*/
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    font-family: 'Comfortaa', cursive;
+    font-size: 25px;
+    background-color: #DADCE0;
+    margin: 0;
+    padding: 0;
+    color: #343434;
+}
+
+
+// TITLES
+h2 {
+    font-size: $font_size_large_title;
+}
