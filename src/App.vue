@@ -1,8 +1,13 @@
 <template>
   <div id="app">
-    <startQuiz :current-comp="currentComp"></startQuiz>
+    <component :is="currentComp"></component>
 
-    <!-- <component :is="currentComp"></component> -->
+    <footer>
+      <p class="text">&#169; Thibaux Swildens</p>
+      <a href="https://github.com/Thibaux" target="_blank">
+        <img src="./assets/content/img/githubIcon.png" alt="githubIcon" />
+      </a>
+    </footer>
   </div>
 </template>
 
@@ -46,5 +51,28 @@ export default {
   text-align: center;
   width: 100vw;
   height: 100vh;
+
+  footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin-bottom: 0.2rem;
+
+    .text {
+      font-size: 50%;
+      margin-right: 0.5rem;
+    }
+
+    img {
+      width: 20px;
+      height: auto;
+    }
+  }
 }
 </style>
