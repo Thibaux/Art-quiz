@@ -7,16 +7,44 @@
     <section>
       <div class="question">
         <div class="artPiece">
-          <img src="" alt="" />
+          <img src="./img.jpg" alt="" />
           <div class="hints"></div>
         </div>
       </div>
       <div class="multipleChoice">
         <div class="choices">
-          <div class="choiceOne"></div>
-          <div class="choiceTwo"></div>
-          <div class="choiceThree"></div>
-          <div class="choiceFour"></div>
+          <div class="choiceOne">
+            <button
+              v-bind:class="[isActive ? 'notClicked' : 'active']"
+              @click="handleClick()"
+            >
+              <div>Antwoord A</div>
+            </button>
+          </div>
+          <div class="choiceTwo">
+            <button
+              v-bind:class="[isActive ? 'notClicked' : 'active']"
+              @click="handleClick()"
+            >
+              <div>Antwoord B</div>
+            </button>
+          </div>
+          <div class="choiceThree">
+            <button
+              v-bind:class="[isActive ? 'notClicked' : 'active']"
+              @click="handleClick()"
+            >
+              <div>Antwoord C</div>
+            </button>
+          </div>
+          <div class="choiceFour">
+            <button
+              v-bind:class="[isActive ? 'notClicked' : 'active']"
+              @click="handleClick()"
+            >
+              <div>Antwoord D</div>
+            </button>
+          </div>
         </div>
       </div>
     </section>
@@ -54,6 +82,7 @@ export default {
     return {
       endQuiz: false,
       vraagID: 1,
+      isActive: true,
     };
   },
 
@@ -65,11 +94,116 @@ export default {
     endQuiz() {
       this.endQuiz === true;
     },
+
+    handleClick: function () {
+      this.isActive = false;
+    },
   },
 };
 </script>
 
 <style scoped lang="scss">
+// Main
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+// Header
+header {
+  position: absolute;
+  left: 2em;
+  top: 3em;
+}
+
+// Content
+
+section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 80%;
+}
+
+// Question
+.question {
+  width: 100%;
+
+  .artPiece {
+    // width: 900px;
+    // height: 750px;
+    width: 50%;
+    height: auto;
+    margin-left: 15%;
+    background-color: black;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+// Choices
+.multipleChoice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
+  margin-left: -20%;
+  margin-right: 2%;
+
+  .choices {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    // max-width: 400px;
+
+    button {
+      width: 200px;
+      height: 50px;
+      background: #f3f0f1;
+      position: relative;
+      background: #f3f0f1;
+      margin-bottom: 25px;
+      border-radius: 32px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.1s ease-in-out;
+
+      span {
+        line-height: 100px;
+        font-family: "Montserrat", sans-serif;
+        font-size: 32px;
+        font-weight: semibold;
+      }
+      &:hover {
+        opacity: 0.3;
+        box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8),
+          6px 6px 10px rgba(0, 0, 0, 0.2);
+      }
+    }
+
+    .notClicked {
+      box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8),
+        6px 6px 10px rgba(0, 0, 0, 0.2);
+      color: #6f6cde;
+    }
+
+    .active {
+      opacity: 0.5;
+      box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.5),
+        inset 8px 8px 16px rgba(0, 0, 0, 0.1);
+      color: #79e3b6;
+    }
+  }
+}
+
 // Next question button
 .nextQuestionButton {
   margin: 10% auto;
@@ -94,8 +228,6 @@ export default {
     border: 2px solid #111;
     padding: 15px 50px;
     overflow: hidden;
-    // min-width: 10px;
-    // width: 100px;
   }
 
   button:hover {
