@@ -6,7 +6,6 @@
 This is an art quiz, where users have to guess the name of the artpiece.
 The user has 4 choices to guess from. 
 
-
 > Build with Vue.js
 
 > Used the Rijksmuseum API
