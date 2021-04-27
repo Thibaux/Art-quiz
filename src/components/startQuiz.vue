@@ -12,6 +12,7 @@
     </header>
 
     <div class="startButton">
+      <input type="hidden" v-on:keyup="enterClicked" />
       <button
         data-hover="Let's quiz!"
         @click="switchComponent('quiz')"
@@ -36,9 +37,29 @@ export default {
     },
   },
 
+  data() {
+    return {
+      t: false,
+    };
+  },
+
+  created: function () {
+    document.addEventListener("keyup", this.enterClicked);
+  },
+  destroyed: function () {
+    document.removeEventListener("keyup", this.enterClicked);
+  },
+
   methods: {
     switchComponent(comp) {
       bus.$emit("switchComp", comp);
+    },
+
+    enterClicked(e) {
+      console.log(" asdfasdf");
+      if (e.keyCode === 13) {
+        this.switchComponent("quiz");
+      }
     },
   },
 };

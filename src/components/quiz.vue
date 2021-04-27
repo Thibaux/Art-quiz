@@ -1,7 +1,7 @@
 <template>
   <main>
     <header>
-      <h3>Vraag {{ vraagID }}</h3>
+      <h4>Vraag {{ vraagID }}</h4>
     </header>
 
     <section>
@@ -15,34 +15,37 @@
         <div class="choices">
           <div class="choiceOne">
             <button
-              v-bind:class="[isActive ? 'notClicked' : 'active']"
-              @click="handleClick()"
+              v-bind:class="[isActive1 ? 'notClicked' : 'active']"
+              @click="isActive1 = !isActive1"
             >
-              <div>Antwoord A</div>
+              <div class="choiceText">
+                Contrary to popular belief, Lorem Ipsum is not simply random
+                text. It ha C
+              </div>
             </button>
           </div>
           <div class="choiceTwo">
             <button
-              v-bind:class="[isActive ? 'notClicked' : 'active']"
-              @click="handleClick()"
+              v-bind:class="[isActive2 ? 'notClicked' : 'active']"
+              @click="isActive2 = !isActive2"
             >
-              <div>Antwoord B</div>
+              <div class="choiceText">Antwoord C</div>
             </button>
           </div>
           <div class="choiceThree">
             <button
-              v-bind:class="[isActive ? 'notClicked' : 'active']"
-              @click="handleClick()"
+              v-bind:class="[isActive3 ? 'notClicked' : 'active']"
+              @click="isActive3 = !isActive3"
             >
-              <div>Antwoord C</div>
+              <div class="choiceText">Antwoord C</div>
             </button>
           </div>
           <div class="choiceFour">
             <button
-              v-bind:class="[isActive ? 'notClicked' : 'active']"
-              @click="handleClick()"
+              v-bind:class="[isActive4 ? 'notClicked' : 'active']"
+              @click="isActive4 = !isActive4"
             >
-              <div>Antwoord D</div>
+              <div class="choiceText">Antwoord D</div>
             </button>
           </div>
         </div>
@@ -82,7 +85,10 @@ export default {
     return {
       endQuiz: false,
       vraagID: 1,
-      isActive: true,
+      isActive1: true,
+      isActive2: true,
+      isActive3: true,
+      isActive4: true,
     };
   },
 
@@ -93,10 +99,6 @@ export default {
 
     endQuiz() {
       this.endQuiz === true;
-    },
-
-    handleClick: function () {
-      this.isActive = false;
     },
   },
 };
@@ -119,7 +121,6 @@ header {
 }
 
 // Content
-
 section {
   display: flex;
   flex-direction: row;
@@ -138,7 +139,6 @@ section {
     width: 50%;
     height: auto;
     margin-left: 15%;
-    background-color: black;
 
     img {
       width: 100%;
@@ -159,48 +159,49 @@ section {
 
   .choices {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    // max-width: 400px;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    width: 20rem;
+    height: 8em;
 
+    // Choice buttons
     button {
-      width: 200px;
+      width: auto;
       height: 50px;
-      background: #f3f0f1;
       position: relative;
-      background: #f3f0f1;
       margin-bottom: 25px;
       border-radius: 32px;
       text-align: center;
       cursor: pointer;
       transition: all 0.1s ease-in-out;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      overflow: hidden;
+      font-weight: 800;
+      font-size: 0.6em;
+      padding: 0.3em;
+      background-color: #dadce0;
 
-      span {
-        line-height: 100px;
-        font-family: "Montserrat", sans-serif;
-        font-size: 32px;
-        font-weight: semibold;
-      }
       &:hover {
-        opacity: 0.3;
-        box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8),
-          6px 6px 10px rgba(0, 0, 0, 0.2);
+        opacity: 1;
+        text-decoration: none;
+        color: #ba9ea7;
+        background-color: #27375c;
       }
-    }
-
-    .notClicked {
-      box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8),
-        6px 6px 10px rgba(0, 0, 0, 0.2);
-      color: #6f6cde;
     }
 
     .active {
-      opacity: 0.5;
-      box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.5),
-        inset 8px 8px 16px rgba(0, 0, 0, 0.1);
+      opacity: 0.8;
       color: #79e3b6;
     }
+  }
+
+  // Choice
+  .choiceText {
+    padding-left: 1em;
+    padding-right: 1em;
   }
 }
 
